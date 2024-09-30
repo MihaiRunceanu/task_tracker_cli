@@ -3,19 +3,26 @@ package service;
 import domain.Task;
 import repository.TaskRepository;
 
+import java.util.ArrayList;
+
 
 public class TaskService {
     private final TaskRepository taskRepository;
+    private int currentId = 1;
 
     public TaskService(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
+    }
+
+    public ArrayList<Task> getTasks() {
+        return taskRepository.getTasks();
     }
 
     public void addTask(String description) throws Exception {
         if (description.length() < 3) {
             throw new Exception("Invalid description.");
         }
-        Task task = new Task(taskRepository.getTasks().size()+1, description, "todo");
+        Task task = new Task(currentId++, description, "todo");
         taskRepository.storeTask(task);
     }
 

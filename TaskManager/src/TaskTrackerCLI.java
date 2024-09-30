@@ -16,6 +16,7 @@ public class TaskTrackerCLI {
     }
 
     public static void main(String[] args){
+
         boolean running = true;
 
         printUsage();
