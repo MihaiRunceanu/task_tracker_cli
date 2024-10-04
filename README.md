@@ -29,3 +29,7 @@ Usage for this app:
   list in-progress                  -> List all the tasks that are in-progress
   
   stop/quit/exit                    -> Exit the application
+
+
+Note:
+Also you may need to change the filename(the path of the tasks file) in the TaskTrackerCLI.java file to your path for the file.
