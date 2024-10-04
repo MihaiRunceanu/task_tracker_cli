@@ -7,6 +7,7 @@ This solution is made in Java with the ItelliJ Build System.
 
 
 Usage for this app:
+
   add (task description)            -> Add a task
   
   update (id) (New description)     -> Update the description of a task
