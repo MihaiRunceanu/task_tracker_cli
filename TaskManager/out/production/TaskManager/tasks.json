@@ -1,0 +1,19 @@
+[ {
+  "id" : 1,
+  "description" : "Cooking dinner",
+  "status" : "todo",
+  "createdAt" : "2024-10-04T19:13:44.791Z",
+  "updatedAt" : "2024-10-04T19:13:44.793Z"
+}, {
+  "id" : 2,
+  "description" : "Cleaning my room",
+  "status" : "todo",
+  "createdAt" : "2024-10-04T19:13:48.257Z",
+  "updatedAt" : "2024-10-04T19:13:48.257Z"
+}, {
+  "id" : 3,
+  "description" : "Study",
+  "status" : "todo",
+  "createdAt" : "2024-10-04T22:19:17.856+03:00",
+  "updatedAt" : "2024-10-04T22:19:17.858+03:00"
+} ]

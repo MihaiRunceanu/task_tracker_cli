@@ -7,12 +7,11 @@ import java.util.Scanner;
 
 public class TaskTrackerCLI {
     private static final ArrayList<Task> tasks = new ArrayList<>();
-    private static final TaskRepository taskRepository = new TaskRepository(tasks);
-    private static TaskService taskService = new TaskService(taskRepository);
+    private static final TaskRepository taskRepository = new TaskRepository(tasks, "D:\\IntelliJ IDEA\\Task_Manager\\TaskManager\\src\\tasks.json");
+    private static final TaskService taskService = new TaskService(taskRepository);
     private static final Scanner scanner = new Scanner(System.in);
 
-    public TaskTrackerCLI(TaskService taskService) {
-        TaskTrackerCLI.taskService = taskService;
+    public TaskTrackerCLI() {
     }
 
     public static void main(String[] args){
@@ -76,23 +75,28 @@ public class TaskTrackerCLI {
     }
 
     private static void printTasks(){
-        if (tasks.isEmpty()){
+        if (taskService.getTasks().isEmpty()){
             System.out.println("No tasks found.");
         } else {
-            for (Task task : tasks){
+            for (Task task : taskService.getTasks()){
                 System.out.println(task);
             }
         }
     }
 
     private static void printByStatus(String status){
-        if (tasks.isEmpty()){
+        if (taskService.getTasks().isEmpty()){
             System.out.println("No tasks found.");
         } else {
-            for (Task task : tasks){
+            boolean found = false;
+            for (Task task : taskService.getTasks()){
                 if (task.getStatus().equals(status)){
                     System.out.println(task);
+                    found = true;
                 }
+            }
+            if (!found){
+                System.out.println("No tasks found.");
             }
         }
     }
@@ -116,6 +120,7 @@ public class TaskTrackerCLI {
             int id = Integer.parseInt(args[0]);
             String description = String.join(" ", args).substring(args[0].length()).trim();
             taskService.updateTask(id, description);
+            System.out.println("Task updated successfully");
         } catch (Exception e){
             System.out.println(e.getMessage());
         }
@@ -145,6 +150,7 @@ public class TaskTrackerCLI {
         try{
             int id = Integer.parseInt(args[0]);
             taskService.deleteTask(id);
+            System.out.println("Task deleted successfully");
         } catch (Exception e){
             System.out.println(e.getMessage());
         }
@@ -157,6 +163,7 @@ public class TaskTrackerCLI {
         try{
             int id = Integer.parseInt(args[0]);
             taskService.markAsInProgress(id);
+            System.out.println("Task marked successfully");
         } catch (Exception e){
             System.out.println(e.getMessage());
         }
@@ -169,6 +176,7 @@ public class TaskTrackerCLI {
         try{
             int id = Integer.parseInt(args[0]);
             taskService.markAsDone(id);
+            System.out.println("Task marked successfully");
         } catch (Exception e){
             System.out.println(e.getMessage());
         }

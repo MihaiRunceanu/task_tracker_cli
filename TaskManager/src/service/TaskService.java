@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 public class TaskService {
     private final TaskRepository taskRepository;
-    private int currentId = 1;
 
     public TaskService(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
@@ -22,8 +21,7 @@ public class TaskService {
         if (description.length() < 3) {
             throw new Exception("Invalid description.");
         }
-        Task task = new Task(currentId++, description, "todo");
-        taskRepository.storeTask(task);
+        taskRepository.storeTask(description);
     }
 
     public void updateTask(int id, String description) throws Exception {

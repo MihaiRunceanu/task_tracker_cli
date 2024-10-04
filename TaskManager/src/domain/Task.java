@@ -6,8 +6,10 @@ public class Task {
     private int id;
     private String description;
     private String status;
-    private ZonedDateTime createdAt = ZonedDateTime.now();
-    private ZonedDateTime updatedAt = ZonedDateTime.now();
+    private ZonedDateTime createdAt;
+    private ZonedDateTime updatedAt;
+
+    public Task(){}
 
     public int getId() {
         return id;
@@ -37,10 +39,16 @@ public class Task {
         return updatedAt;
     }
 
+    public ZonedDateTime getCreatedAt() {
+        return createdAt;
+    }
+
     public Task(int id, String description, String status) {
         this.id = id;
         this.description = description;
         this.status = status;
+        this.createdAt = ZonedDateTime.now();
+        this.updatedAt = ZonedDateTime.now();
     }
 
     @Override
